@@ -6,6 +6,7 @@ package com.soft1851.spring.ioc.dao.impl;/*@ClassName PostDaoImpl
  **/
 
 import com.soft1851.spring.ioc.dao.PostDao;
+import com.soft1851.spring.ioc.entity.Forum;
 import com.soft1851.spring.ioc.entity.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
@@ -85,6 +86,22 @@ public class PostDaoImpl implements PostDao {
                 "WHERE post.forum_id = ? ";
         Object[] args = { forumId };
         return jdbcTemplate.queryForObject(sql,Integer.class,args);
+    }
+    @Override
+    public int[] batchInsert(List<Post>  posts) {
+        final  List<Post> postList = posts;
+        String sql ="DELETE FROM t_post WHERE post_id = ? ";
+        return jdbcTemplate.batchUpdate(sql, new BatchPreparedStatementSetter() {
+            @Override
+            public void setValues(PreparedStatement preparedStatement, int i) throws SQLException {
+                preparedStatement.setInt(1,postList.get(i));
+            }
+
+            @Override
+            public int getBatchSize() {
+                return postList.size();
+            }
+        });
     }
 
 }
