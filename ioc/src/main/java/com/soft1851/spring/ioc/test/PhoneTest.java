@@ -1,10 +1,11 @@
-package com.soft1851.spring.ioc.entity;/*@ClassName PhoneTest
+package com.soft1851.spring.ioc.test;/*@ClassName PhoneTest
  *@Description:todo
  *@author yc_shang
  *@Date2020/3/12
  *@Version 1.0
  **/
 
+import com.soft1851.spring.ioc.entity.Phone;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
