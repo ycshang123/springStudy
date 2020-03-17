@@ -9,6 +9,10 @@ public class Phone {
     private String brand;
     private Double price;
 
+    public Phone(String brand) {
+        this.brand = brand;
+    }
+
     public Phone() {
     }
 
@@ -16,11 +20,19 @@ public class Phone {
         this.brand = brand;
         this.price = price;
     }
+
     @Override
     public String toString() {
         return "Phone{" +
                 "brand='" + brand + '\'' +
-                ", price=" + price +
                 '}';
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public String getBrand() {
+        return brand;
     }
 }

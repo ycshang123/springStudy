@@ -5,17 +5,34 @@ package com.soft1851.spring.ioc.entity;/*@ClassName Student
  *@Version 1.0
  **/
 
+import java.util.List;
+
 public class Student {
+    private  Integer id;
     private String name;
-    private Phone phone;
+    private List<String> hobby;
+    private List<Phone> equip;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public List<String> getHobby() {
+        return hobby;
+    }
+
+    public void setHobby(List<String> hobby) {
+        this.hobby = hobby;
+    }
 
     public Student() {
     }
 
-    public Student(String name, Phone phone) {
-        this.name = name;
-        this.phone = phone;
-    }
+
 
     public String getName() {
         return name;
@@ -25,19 +42,29 @@ public class Student {
         this.name = name;
     }
 
-    public Phone getPhone() {
-        return phone;
+
+    public Student(Integer id, String name, List<String> hobby, List<Phone> equip) {
+        this.id = id;
+        this.name = name;
+        this.hobby = hobby;
+        this.equip = equip;
     }
 
-    public void setPhone(Phone phone) {
-        this.phone = phone;
+    public List<Phone> getEquip() {
+        return equip;
+    }
+
+    public void setEquip(List<Phone> equip) {
+        this.equip = equip;
     }
 
     @Override
     public String toString() {
         return "Student{" +
-                "name='" + name + '\'' +
-                ", phone=" + phone +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", hobby=" + hobby +
+                ", equip=" + equip +
                 '}';
     }
 }
