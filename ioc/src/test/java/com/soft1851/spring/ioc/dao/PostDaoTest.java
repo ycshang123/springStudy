@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.net.URL;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,10 +20,14 @@ public class PostDaoTest {
 
     @Test
     public void insert() {
+        URL resource = getClass().getClassLoader().getResource("images/1.jpg");
+        String path= resource.getPath();
         Post post = new Post();
         post.setTitle("第一个标题");
         post.setContext("这是一段内容");
+//        post.setThumbnail(FileUtil.fileToURL(new File(path))));
         post.setForumId(1);
+        post.setPostTime(new Timestamp(System.currentTimeMillis()));
         int n = postDao.insert(post);
         System.out.println(n);
 
@@ -34,17 +40,20 @@ public class PostDaoTest {
         post1.setForumId(2);
         post1.setTitle("第二个标题");
         post1.setContext("这是一段内容");
+        post1.setPostTime(new Timestamp(System.currentTimeMillis()));
         Post post2 = new Post();
         post2.setPostId(3);
         post2.setForumId(3);
         post2.setTitle("第三个标题");
         post2.setContext("这是一段内容");
+        post2.setPostTime(new Timestamp(System.currentTimeMillis()));
         Post post3 = new Post();
         post3.setPostId(4);
         post3.setForumId(4);
         post3.setTitle("第四个标题");
         post3.setContext("这是一段内容");
         List<Post> list = new ArrayList<>();
+        post3.setPostTime(new Timestamp(System.currentTimeMillis()));
         list.add(post1);
         list.add(post2);
         list.add(post3);
