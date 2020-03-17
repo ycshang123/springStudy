@@ -6,6 +6,7 @@ package com.soft1851.spring.ioc.dao.impl;/*@ClassName PostDaoImpl
  **/
 
 import com.soft1851.spring.ioc.dao.PostDao;
+import com.soft1851.spring.ioc.entity.Forum;
 import com.soft1851.spring.ioc.entity.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
@@ -77,8 +78,14 @@ public class PostDaoImpl implements PostDao {
     }
 
     @Override
-    public int countPostByForumId(int forumId) {
-        String sql = "SELECT COUNT(post_id) FROM t_post WHERE forum_id="+forumId;
-        return jdbcTemplate.query(sql,new BeanPropertyRowMapper<>(Post.class)).size();
+    public int count(Integer forumId) {
+        String sql = "SELECT COUNT(*)\n" +
+                "FROM t_post post\n" +
+                "LEFT JOIN t_forum forum\n" +
+                "ON post.forum_id = forum.forum_id\n" +
+                "WHERE post.forum_id = ? ";
+        Object[] args = { forumId };
+        return jdbcTemplate.query(sql,args, new BeanPropertyRowMapper<>(Forum.class)).size();
     }
+
 }

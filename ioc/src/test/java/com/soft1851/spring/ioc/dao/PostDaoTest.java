@@ -72,9 +72,10 @@ public class PostDaoTest {
         postList.forEach(item -> System.out.println(item.getPostId()));
     }
 
+
     @Test
-    public void countPostByForumId() {
-        int n = postDao.countPostByForumId(3);
-        System.out.println(n);
+    public void count() {
+        int i = 3;
+        System.out.println(postDao.count(i));
     }
 }

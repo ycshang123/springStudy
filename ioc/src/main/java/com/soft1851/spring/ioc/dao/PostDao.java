@@ -20,5 +20,5 @@ public interface PostDao {
     Post get(int postId);
     //根据关键字查询post
     List<Post> selectByKey(String key);
-    int countPostByForumId(int forumId);
+    int count(Integer forumId);
 }
