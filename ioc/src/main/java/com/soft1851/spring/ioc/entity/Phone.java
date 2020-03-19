@@ -5,34 +5,16 @@ package com.soft1851.spring.ioc.entity;/*@ClassName Phone
  *@Version 1.0
  **/
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 public class Phone {
     private String brand;
     private Double price;
-
-    public Phone(String brand) {
-        this.brand = brand;
-    }
-
-    public Phone() {
-    }
-
-    public Phone(String brand, Double price) {
-        this.brand = brand;
-        this.price = price;
-    }
-
-    @Override
-    public String toString() {
-        return "Phone{" +
-                "brand='" + brand + '\'' +
-                '}';
-    }
-
-    public void setBrand(String brand) {
-        this.brand = brand;
-    }
-
-    public String getBrand() {
-        return brand;
-    }
 }

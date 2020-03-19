@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+    <!-- 自动扫包-->
+    <context:component-scan base-package="com.soft1851.spring.ioc.config"/>
+    <!-- Phone的bean标签-->
+<!--    <bean id ="phone" class="com.soft1851.spring.ioc.entity.Phone">-->
+<!--        <constructor-arg name="brand" value="iPhone11" />-->
+<!--        <constructor-arg name ="price" value="6666.6"/>-->
+<!--    </bean>-->
+<!--    <bean id ="phone1" class="com.soft1851.spring.ioc.entity.Phone">-->
+<!--        <constructor-arg name="brand" value="ipad" />-->
+<!--        <constructor-arg name ="price" value="6666.6"/>-->
+<!--    </bean>-->
+    <!--Phone的bean标签  -->
+    <bean class="com.soft1851.spring.ioc.entity.Phone" id ="phone"  p:brand="iphone11"/>
+    <bean class="com.soft1851.spring.ioc.entity.Phone" id ="phone1"  p:brand="ipad"/>
+    <bean class="com.soft1851.spring.ioc.entity.Phone" id ="phone2"  p:brand="computer"/>
+    <!--Book的bean标签-->
+    <bean id ="book" class="com.soft1851.spring.ioc.entity.Book" p:name="Java零基础学习"/>
+    <bean id ="book1" class="com.soft1851.spring.ioc.entity.Book" p:name="Spring架构演变"/>
+    <bean id ="book2" class="com.soft1851.spring.ioc.entity.Book" p:name="Vue.js学习"/>
+    <bean id ="student" class="com.soft1851.spring.ioc.entity.Student" p:id="1" p:name="尚宇驰">
+<!--            List对象bean标签-->
+        <property name="equip" >
+                <list>
+                    <ref bean="phone"/>
+                    <ref bean="phone1"/>
+                    <ref bean="phone2"/>
+                </list>
+            </property>
+<!--           List常量bean标签-->
+            <property name="hobby">
+                <list>
+                    <value>追剧</value>
+                    <value>运动</value>
+                    <value>编程</value>
+                </list>
+            </property>
+<!--           Set对象bean标签-->
+            <property name="books">
+                <set>
+                    <ref bean="book"/>
+                    <ref bean ="book1"/>
+                    <ref bean ="book2"/>
+                </set>
+            </property>
+<!--        Map对象bean标签-->
+            <property name="equipMap">
+                <map>
+                    <entry key="1" value-ref="phone"/>
+                    <entry key="2" value-ref="phone1"/>
+                    <entry key="3" value-ref="phone2"/>
+                </map>
+            </property>
+        </bean>
+<!--    user对象bean标签-->
+    <bean id="user" class="com.soft1851.spring.ioc.entity.User">
+        <constructor-arg name="account" value="admin"/>
+        <constructor-arg name="password" value="111"/>
+    </bean>
+    <bean id="user1" class="com.soft1851.spring.ioc.entity.User">
+        <constructor-arg name="account" value="admin1"/>
+        <constructor-arg name="password" value="111"/>
+    </bean>
+<!--    userLogin对象bean标签-->
+    <bean id ="userLogin" class="com.soft1851.spring.ioc.entity.UserLogin">
+        <property name="user" ref="user"/>
+    </bean>
+    <bean id ="userLogin1" class="com.soft1851.spring.ioc.entity.UserLogin">
+        <property name="user" ref="user1"/>
+    </bean>
+<!--    sort对象的bean标签-->
+    <bean id ="sort" class="com.soft1851.spring.ioc.entity.Sort"/>
+</beans>
