@@ -7,10 +7,10 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-  <head>
-    <title>跑一跑</title>
-  </head>
-  <body>
-  Spring 得的
-  </body>
+<head>
+    <title>maven项目下web项目的测试</title>
+</head>
+<body>
+maven项目下web项目的测试
+</body>
 </html>
